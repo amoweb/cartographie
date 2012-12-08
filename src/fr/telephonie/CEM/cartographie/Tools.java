@@ -125,7 +125,7 @@ public class Tools {
 	}
 	
 	/**
-	 * Proc�dure de cr�ation d'un fichier KML
+	 * Procédure de création d'un fichier KML
 	 * @param List<Point>
 	 * @param String fichier
 	 * @return false en cas d'erreur
@@ -209,7 +209,7 @@ public class Tools {
 	}
 	
 	/**
-	 * Proc�dure de cr�ation d'un fichier KML
+	 * Procédure de création d'un fichier KML
 	 * @param mediumValueDouble
 	 * @param highValueDouble
 	 * @param List<Point>
@@ -404,7 +404,7 @@ public class Tools {
 	}
 
 	/**
-	 * Fonction qui renvoie le Point de la liste le plus pr�s d'un timestamp
+	 * Fonction qui renvoie le Point de la liste le plus près d'un timestamp
 	 * @param List<Point>
 	 * @param long timestamp
 	 * @param start id
@@ -443,7 +443,7 @@ public class Tools {
 	}
 	
 	/**
-	 * Place les valeurs de la premi�re liste dans la seconde
+	 * Place les valeurs de la première liste dans la seconde
 	 * @param points contenant les positions
 	 * @param points contenants les valeurs
 	 * @return 
@@ -472,7 +472,7 @@ public class Tools {
 		
 		return loc;
 	    }
-	    // Compl�te les Point valeurs 
+	    // Complète les Point valeurs 
 	    else
 	    {
 		for(Point pVal : val)
@@ -513,7 +513,7 @@ public class Tools {
 	}
 	
 	/**
-	 * D�tecte le type de fichier
+	 * Détecte le type de fichier
 	 * @return String
 	 * @throws IOException 
 	 */
@@ -540,7 +540,7 @@ public class Tools {
 	}
 
 	/**
-	 * Charge le contenu du fichier Narda (coordonn�es et tensions)
+	 * Charge le contenu du fichier Narda (coordonnées et tensions)
 	 * @param dataFile
 	 * @return
 	 * @throws IOException 
@@ -579,13 +579,13 @@ public class Tools {
 	}
 
 	/**
-	 * Converti la coordonn�e en notation standard
+	 * Converti la coordonnée en notation standard
 	 * @param string
 	 * @return
 	 * @throws LocationFormatException 
 	 */
 	private static String GPSNotation(String coordonnee) throws LocationFormatException {
-	    Pattern p = Pattern.compile("^([0-9.]+)�([0-9]+)'([0-9.]+)'' [NE](.*)");
+	    Pattern p = Pattern.compile("^([0-9.]+)°([0-9]+)'([0-9.]+)'' [NE](.*)");
 	    Matcher m = p.matcher(coordonnee);
 	
 	    if(m.matches())

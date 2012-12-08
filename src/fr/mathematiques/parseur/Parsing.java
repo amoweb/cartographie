@@ -24,7 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Classe d'évaluation d'expression arithmétique
+ * Classe d'Ã©valuation d'expression arithmÃ©tique
  * @author Amaury Graillat
  */
 public class Parsing
@@ -38,7 +38,7 @@ public class Parsing
     
     /**
      * Calcul la valeur d'une expression
-     * @return double : résultat
+     * @return double : rÃ©sultat
      * @throws MathParsingException 
      * @throws NumberFormatException 
      */
@@ -50,14 +50,13 @@ public class Parsing
     
     /**
      * Calcul recurcif
-     * @param chaine formatée (espace entre les tokens)
-     * @return String chaine représentant le résultat
+     * @param chaine formatÃ©e (espace entre les tokens)
+     * @return String chaine reprÃ©sentant le rÃ©sultat
      */
     private String calculate(String x) throws MathParsingException
     {
 		Matcher m;
 		
-		//System.out.println("#" + x + "#");
 		x = x.replaceAll("[ ]+", " ");
 		
 		// Cas de base : un chiffre
@@ -69,7 +68,7 @@ public class Parsing
 		if(m.matches())
 		    return calculate(m.group(1) +  " "  + String.valueOf(Math.log10(Double.parseDouble(m.group(2)))) +  " "  + m.group(3));
 		
-		// Traitement des parenthèses en premier
+		// Traitement des parenthÃ¨ses en premier
 		m = this.regex(x, "^(.*)\\(([^)]*)\\)(.*)$");
 		if(m.matches())
 		    return calculate(m.group(1) +  " "  + calculate(m.group(2)) +  " "  + m.group(3));
@@ -97,8 +96,8 @@ public class Parsing
     }
 
     	/**
-    	 * Effectue une somme de gauche à droite
-    	 * @param String somme formatée (espace entre les tokens)
+    	 * Effectue une somme de gauche Ã  droite
+    	 * @param String somme formatÃ©e (espace entre les tokens)
     	 * @return String
     	 * @throws MathParsingException 
     	 */
@@ -110,7 +109,7 @@ public class Parsing
 	    String operateur = "+"; 
 	    for(int i=1; i<tokens.length; i++)
 	    {
-		// Opérateur
+		// Opï¿½rateur
 		if(tokens[i].matches("^[+-]$"))
 		    operateur = tokens[i];
 		

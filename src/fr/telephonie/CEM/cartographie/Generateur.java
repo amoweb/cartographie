@@ -42,7 +42,7 @@ public class Generateur
     private String formule;
 
     /**
-     * Création d'un générateur
+     * CrÃ©ation d'un gÃ©nÃ©rateur
      * @param destKML
      * @param GPXFile
      * @param altitudeMax
@@ -50,7 +50,8 @@ public class Generateur
      * @throws IOException 
      * @throws JDOMException 
      */
-    public Generateur(String destKML, String GPXFile, int altitudeMax, String formule) throws JDOMException, IOException, ParseException
+    public Generateur(String destKML, String GPXFile, int altitudeMax, String formule)
+	    throws JDOMException, IOException, ParseException
     {
 	this.destKML = destKML;
 	this.GPXFile = GPXFile;
@@ -63,9 +64,9 @@ public class Generateur
 
     
     /**
-     * Fusionne les listes de points : données + positions
-     * @param lval liste des points données
-     * @return liste finale de points complets (données + position)
+     * Fusionne les listes de points : donnÃ©es + positions
+     * @param lval liste des points donnÃ©es
+     * @return liste finale de points complets (donnÃ©es + position)
      * @throws NoEnoughtPointsException 
      * @throws CorrelationErrorException 
      * @throws MathParsingException 
@@ -82,13 +83,13 @@ public class Generateur
 	}
 	else
 	{
-        	if(this.lpos.size() < 2 || this.lval.size() < 2)
-        		throw new NoEnoughtPointsException(this.lpos.size(), this.lval.size());
+        	if(lpos.size() < 2 || lval.size() < 2)
+        		throw new NoEnoughtPointsException(lpos.size(), lval.size());
         	
-        	finale = Tools.mergeLists(this.lpos, lval);
+        	finale = Tools.mergeLists(lpos, lval);
 	}
 	
-	// Aucune modification n'est effectuée sur les données
+	// Aucune modification n'est effectuÃ©e sur les donnÃ©es
 	if(this.formule.contentEquals("x") && this.altitudeMax == 0)
 	{
 	    for(Point p : finale)
@@ -96,7 +97,7 @@ public class Generateur
 		p.setAltitude(p.getValue());
 	    }
 	}
-	// Modifications nécessaires
+	// Modifications nÃ©cessaires
 	else
 	{
         	// Calcul l'altitude en fonction de la valeur
@@ -119,7 +120,7 @@ public class Generateur
         		
         		for(Point p : finale)
         		{
-        		    // L'altitude a déjà été modifiée par la formule
+        		    // L'altitude a dÃ©jÃ  Ã©tÃ© modifiÃ©e par la formule
         		    if(this.formule.contentEquals("x"))
         		        p.setAltitude((int)((float)p.getValue()*((float)this.altitudeMax/(float)max)));
         		    else
@@ -128,7 +129,7 @@ public class Generateur
         	}
 	}
 	
-	// Calcul le début des points utiles
+	// Calcul le dÃ©but des points utiles
 	int iStart;
 	for(iStart=0; iStart < finale.size(); iStart++)
 	{
@@ -156,8 +157,8 @@ public class Generateur
     }
     
     /**
-     * Génère le KML à partir d'un fichier tension
-     * @param fichier de donnée (Aaronia ou Lascar)
+     * GÃ©nÃ¨re le KML Ã  partir d'un fichier tension
+     * @param fichier de donnÃ©e (Aaronia ou Lascar)
      * @throws ParseException 
      * @throws IOException 
      * @throws NumberFormatException 
@@ -170,7 +171,9 @@ public class Generateur
      * @throws SyntacticCheckException 
      * @throws EvaluationCheckException 
      */
-    public void generateKMLfromData(String dataFile) throws NumberFormatException, IOException, ParseException, CorrelationErrorException, NoEnoughtPointsException, NullAltitudeException, MathParsingException, LocationFormatException
+    public void generateKMLfromData(String dataFile)
+    	throws NumberFormatException, IOException, ParseException, CorrelationErrorException,
+    	NoEnoughtPointsException, NullAltitudeException, MathParsingException, LocationFormatException
     {
 	List<Point> lfinale = null;
 	
@@ -187,7 +190,7 @@ public class Generateur
     }
 
     /**
-     * Génère le KML à partir d'un fichier tension
+     * GÃ©nÃ¨re le KML Ã  partir d'un fichier tension
      * @param file (Aaronia ou Lascar)
      * @throws ParseException 
      * @throws IOException 

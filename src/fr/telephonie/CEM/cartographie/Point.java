@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * Objet de repr�sentation d'un point
+ * Objet de représentation d'un point
  * @author Amaury Graillat
  */
 public class Point implements Cloneable
@@ -40,7 +40,7 @@ public class Point implements Cloneable
     public int indice;
     
     /**
-     * Cr�ation d'un point
+     * Création d'un point
      * @param longitude
      * @param latitude
      * @param timestamp
@@ -56,7 +56,7 @@ public class Point implements Cloneable
     }
     
     /**
-     * Cr�ation d'un point
+     * Création d'un point
      * @param longitude
      * @param latitude
      * @param time (ISO 8601)
@@ -73,7 +73,7 @@ public class Point implements Cloneable
     }
     
     /**
-     * Cr�ation d'un point
+     * Création d'un point
      * @param longitude
      * @param latitude
      * @param time (ISO 8601)
@@ -90,7 +90,7 @@ public class Point implements Cloneable
     }
 
     /**
-     * Cr�ation d'un Point
+     * Création d'un Point
      */
     public Point()
     {
@@ -161,7 +161,7 @@ public class Point implements Cloneable
     }
     
     /**
-     * Renvoie les coordonn�es de type 5.068086,45.886459,20.000000
+     * Renvoie les coordonnées de type 5.068086,45.886459,20.000000
      * @return String
      */
     public String getCoordinates()
@@ -172,7 +172,7 @@ public class Point implements Cloneable
     /**
      * ISO 8601 en timestamp 
      * @param String heure (ISO 8601) 
-     * @return timestamp correspondant � la zone locale
+     * @return timestamp correspondant à la zone locale
      * @throws ParseException 
      */
     private long ISO8601Timestamp(String time) throws ParseException

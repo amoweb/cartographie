@@ -89,7 +89,7 @@ public class Fenetre extends JFrame implements ActionListener
 	this.panelDonnees = new JPanel();
 	this.panelDonnees.setLayout(new BorderLayout());
 	this.editTension = new JTextField("", 30);
-	this.parcourirTension = new JButton("Parcourir données");
+	this.parcourirTension = new JButton("Parcourir donnÃ©es");
 	this.panelDonnees.add(this.parcourirTension, BorderLayout.EAST);
 	this.panelDonnees.add(this.editTension, BorderLayout.CENTER);
 	this.parcourirTension.addActionListener(this);
@@ -97,19 +97,19 @@ public class Fenetre extends JFrame implements ActionListener
 	this.panelFormule = new JPanel();
 	this.panelFormule.setLayout(new BorderLayout());
 	this.editFormule = new JTextField("x", 5);
-	this.editFormule.setToolTipText("Spécifier une formule à appliquer à la donnée x. Laissez x pour ne rien changer.");
+	this.editFormule.setToolTipText("SpÃ©cifier une formule Ã  appliquer Ã  la donnÃ©e x. Laissez x pour ne rien changer.");
 	this.panelFormule.add(new JLabel("Formule : Altitude(x) = "), BorderLayout.WEST);
 	this.panelFormule.add(this.editFormule, BorderLayout.CENTER);
 	
 	this.panelAltitudeMax = new JPanel();
 	this.panelAltitudeMax.setLayout(new BorderLayout());
 	this.editAltitudeMax = new JTextField("100", 6);
-	this.editAltitudeMax.setToolTipText("Altitude maximal de la représentation des données. Indiquer 0 pour utiliser les unités comme des mètre sans modification.");
+	this.editAltitudeMax.setToolTipText("Altitude maximal de la reprÃ©sentation des donnÃ©es. Indiquer 0 pour utiliser les unitï¿½s comme des mï¿½tre sans modification.");
 	this.panelAltitudeMax.add(new JLabel("Altitude maximale (m) : "), BorderLayout.WEST);
 	this.panelAltitudeMax.add(this.editAltitudeMax, BorderLayout.CENTER);
-	this.panelAltitudeMax.add(new JLabel(" (0 désactive l'adaptation)"), BorderLayout.EAST);
+	this.panelAltitudeMax.add(new JLabel(" (0 dÃ©sactive l'adaptation)"), BorderLayout.EAST);
 	
-	this.btnConvertir = new JButton("Créer KML");
+	this.btnConvertir = new JButton("CrÃ©er KML");
 	this.btnConvertir.addActionListener(this);
 	
 	this.copyright = new JLabel("Copyright 2012, Amaury Graillat");
@@ -119,15 +119,15 @@ public class Fenetre extends JFrame implements ActionListener
 	gridLayout.setVgap(7);
 	this.panelPrincipal.setLayout(gridLayout);
 	this.panelPrincipal.add(new JLabel("GNU General Public License."));
-	this.panelPrincipal.add(new JLabel("Coordonnées GPS :"));
+	this.panelPrincipal.add(new JLabel("CoordonnÃ©es GPS :"));
 	this.panelPrincipal.add(this.panelGPX);
 	this.panelPrincipal.add(new JSeparator());
 	
-	this.panelPrincipal.add(new JLabel("Données à cartographier (Aaronia, Lascar, Narda) :"));
+	this.panelPrincipal.add(new JLabel("DonnÃ©es Ã  cartographier (Aaronia, Lascar, Narda) :"));
 	this.panelPrincipal.add(this.panelDonnees);
 	this.panelPrincipal.add(new JSeparator());
 	
-	this.panelPrincipal.add(new JLabel("Traitement des données :"));
+	this.panelPrincipal.add(new JLabel("Traitement des donnÃ©es :"));
 	this.panelPrincipal.add(this.panelFormule);
 	this.panelPrincipal.add(this.panelAltitudeMax);
 	this.panelPrincipal.add(new JSeparator());
@@ -187,7 +187,7 @@ public class Fenetre extends JFrame implements ActionListener
             
             this.fileChooser.removeChoosableFileFilter(filter);
 	}
-	// Ouverture d'un fichier données
+	// Ouverture d'un fichier donnÃ©es
 	else if(evt.getSource() == this.parcourirTension)
 	{
 	    FiltreDeFichiers filterTXT = new FiltreDeFichiers(".txt");
@@ -207,7 +207,7 @@ public class Fenetre extends JFrame implements ActionListener
             this.fileChooser.removeChoosableFileFilter(filterTXT);
             this.fileChooser.removeChoosableFileFilter(filterCVS);
 	}
-	// Génération du fichier KML
+	// GÃ©nÃ©ration du fichier KML
 	else if(evt.getSource() == this.btnConvertir)
 	{
 	    FiltreDeFichiers filter = new FiltreDeFichiers(".kml");
@@ -227,7 +227,7 @@ public class Fenetre extends JFrame implements ActionListener
         		if(!KMLfile.endsWith(".kml"))
         		    KMLfile = KMLfile + ".kml";
         		
-        		// La coloration a été activée
+        		// La coloration a Ã©tÃ© activÃ©e
         		if(this.cbColoration.isSelected())
         		{
         		    new Generateur(KMLfile, this.editGPX.getText(), Integer.parseInt(this.editAltitudeMax.getText()), this.editFormule.getText()).generateKMLfromData(this.editTension.getText(), this.editMediumValue.getText(), this.editHighValue.getText());
@@ -237,7 +237,7 @@ public class Fenetre extends JFrame implements ActionListener
         		    new Generateur(KMLfile, this.editGPX.getText(), Integer.parseInt(this.editAltitudeMax.getText()), this.editFormule.getText()).generateKMLfromData(this.editTension.getText());
         		}
         		this.fileChooser.removeChoosableFileFilter(filter);
-			JOptionPane.showMessageDialog(null, "Fichier KML généré : tout va bien !");
+			JOptionPane.showMessageDialog(null, "Fichier KML gÃ©nÃ©rÃ© : tout va bien !");
 		    }
         	    catch (NumberFormatException e)
 		    {
@@ -253,15 +253,15 @@ public class Fenetre extends JFrame implements ActionListener
 		    }
         	    catch (CorrelationErrorException e)
 		    {
-        		JOptionPane.showMessageDialog(null, "Impossible de corréler les heures des données avec les heures des positions. Vérifiez que l'appareil qui a généré les fichiers de données dispose du même fuseau horaire que cet ordinateur.");
+        		JOptionPane.showMessageDialog(null, "Impossible de corrÃ©ler les heures des donnÃ©es avec les heures des positions. VÃ©rifiez que l'appareil qui a gÃ©nÃ©rÃ© les fichiers de donnÃ©es dispose du mÃªme fuseau horaire que cet ordinateur.");
 		    }
         	    catch (NoEnoughtPointsException e)
 		    {
-			JOptionPane.showMessageDialog(null, "Pas assez d'échantillon pour générer un fichier (celà peut être dû au format du fichier qui est mal reconnu) : " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Pas assez d'Ã©chantillon pour gÃ©nÃ©rer un fichier (celÃ  peut Ãªtre dÃ» au format du fichier qui est mal reconnu) : " + e.getMessage());
 		    }
         	    catch (NullAltitudeException e)
 		    {
-			JOptionPane.showMessageDialog(null, "Altitude maximale nulle, problème de format du fichier de données ?");
+			JOptionPane.showMessageDialog(null, "Altitude maximale nulle, problÃ¨me de format du fichier de donnÃ©es ?");
 		    }
         	    catch (JDOMException e)
 		    {
@@ -271,7 +271,7 @@ public class Fenetre extends JFrame implements ActionListener
 		    {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		    } catch (LocationFormatException e) {
-			JOptionPane.showMessageDialog(null, "Problème dans la notation des coordonnées." + e.getMessage());
+			JOptionPane.showMessageDialog(null, "ProblÃ¨me dans la notation des coordonnÃ©es." + e.getMessage());
 		    }
         	}
             }
