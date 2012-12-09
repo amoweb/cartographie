@@ -32,12 +32,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jdom.Document;
 
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-
-
 
 public class Tools {
 	/**
@@ -95,30 +94,53 @@ public class Tools {
 	@SuppressWarnings("unchecked")
 	public static List<Point> loadGPX(String file) throws JDOMException, IOException, ParseException
 	{
-	    org.jdom.Document document;
 	    List<Point> l = new LinkedList<Point>();
 	    
 	    SAXBuilder sxb = new SAXBuilder();
-	    document = sxb.build(new File(file));
-	    Element racine = document.getRootElement();
-	    Element trk = (Element) racine.getChildren().get(2);
-	    Element trkseg = (Element) trk.getChildren().get(0);
+	    Document document = sxb.build(new File(file));
+	    Element gpx = document.getRootElement();
+	    if(gpx == null)
+	    	throw new JDOMException();
 	    
-	    // Parcourt des checkpoints
-	    Iterator<Element> i = trkseg.getChildren().iterator();
+	    Iterator<Element> i = gpx.getChildren().iterator();
+	    Element trk = null;
 	    while(i.hasNext())
 	    {
-		Element trkpt = i.next();
-		String time = null;
-		for(int j=0; j<trkpt.getChildren().size(); j++)
-		{
-		    if(((Element) trkpt.getChildren().get(j)).getName() == "time")
-			time = ((Element) trkpt.getChildren().get(j)).getValue();
-		}
-		if(time != null)
-		{
-		    l.add(new Point(trkpt.getAttributeValue("lon"), trkpt.getAttributeValue("lat"), time));
-		}
+	    	trk = i.next();
+	    	if(trk.getName().equals("trk"))
+	    		break;
+	    }
+	    if(trk == null)
+	    	throw new JDOMException();
+	    
+	    i = trk.getChildren().iterator();
+	    Element trkseg = null;
+	    while(i.hasNext())
+	    {
+	    	trkseg = i.next();
+	    	if(trkseg.getName().equals("trkseg"))
+	    		break;
+	    }
+	    if(trkseg == null)
+	    	System.out.println("trkseg");
+	    if(trkseg == null)
+	    	throw new JDOMException();
+	    
+	    // Parcourt des checkpoints
+	    i = trkseg.getChildren().iterator();
+	    while(i.hasNext())
+	    {
+	    	Element trkpt = i.next();
+	    	String time = null;
+	    	for(int j=0; j<trkpt.getChildren().size(); j++)
+	    	{
+	    		if(((Element) trkpt.getChildren().get(j)).getName() == "time")
+	    			time = ((Element) trkpt.getChildren().get(j)).getValue();
+	    	}
+	    	if(time != null)
+	    	{
+	    		l.add(new Point(trkpt.getAttributeValue("lon"), trkpt.getAttributeValue("lat"), time));
+	    	}
 	    }
 	    
 	    return l;

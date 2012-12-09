@@ -212,10 +212,10 @@ public class Generateur
      */
     public void generateKMLfromData(String dataFile, String mediumValue, String highValue) throws NumberFormatException, NoEnoughtPointsException, CorrelationErrorException, MathParsingException, NullAltitudeException, IOException, ParseException
     {
-	double mediumValueDouble = Double.parseDouble(mediumValue);
-	double highValueDouble = Double.parseDouble(highValue);
-	
-	List<Point> lfinale = this.preparePoints(this.lpos, Tools.loadData(dataFile));	
-	Tools.generateKML(lfinale, this.destKML, mediumValueDouble, highValueDouble);
+    	double mediumValueDouble = Double.parseDouble(mediumValue);
+    	double highValueDouble = Double.parseDouble(highValue);
+
+    	List<Point> lfinale = this.preparePoints(this.lpos, Tools.loadData(dataFile));	
+    	Tools.generateKML(lfinale, this.destKML, mediumValueDouble, highValueDouble);
     }
 }
