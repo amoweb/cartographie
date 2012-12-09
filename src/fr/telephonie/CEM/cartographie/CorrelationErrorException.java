@@ -1,7 +1,7 @@
 /**
  * Copyright 2012 Amaury Graillat
  *
- * This file is part of Foobar.
+ * This file is part of amowebCartographie.
  *
  *  amoweb Cartographie is free software: you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License as
